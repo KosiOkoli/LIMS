@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends "index.html" %}
+{% load static %}
+
+{% block main_content %}
+<main role="main">
+<div class="jumbotron">
+ <div class="jumbotron">
+  <img src="{% static '/LMS_logo_BIG.png' %}" class="rounded float-start" height="450" width="850" style="margin-right: -200px; margin-top: -150px" >
+  <h1 class="display-4">Hello, readers!</h1>
+  <p>Welcome to InfoShelf. We have a large collection of books to cater the reading needs of all kinds of readers.</p>
+  <p><a role="button" href="/books" class="btn btn-primary btn-lg">Browse our collection >></a></p>
+ </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h2>Why reading is important?</h2>
+     <p>Reading is good for you because it improves your focus, memory, empathy, and communication skills. It can reduce stress, improve your mental health, and help you live longer. Reading also allows you to learn new things to help you succeed in your work and relationships.</p>
+    </div>
+    <div class="col">
+       <h2>Key Benefits</h2>
+      <ul>
+          <li>Increase your vocabulary and comprehension skills</li>
+          <li>Reduce stress</li>
+          <li>Improve mental health</li>
+          <li>Prevents cognitive decline</li>
+         </ul>
+    </div>
+    <div class="col">
+       <h2>Thought for the day</h2>
+       <p>*Just don't give up trying to do what you really want to do. Where there is love and inspiration, I don't think you can go wrong.* - Ella Fitzgerald</p>
+    </div>
+  </div>
+</div>
+</main>
+<hr>
+<footer class="container">
+ <p>© InfoShelf 2025</p>
+</footer>
+{% endblock %}
