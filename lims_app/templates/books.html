@@ -4,6 +4,27 @@
 
 {% block main_content %}
 
-<h1>Browse Books</h1>
+<h1 style="text-align: center;">Browse Books</h1>
+<div class="container-flex text-center justify-content-center align-items-center" style="padding-top: 10px; padding-bottom: 20px; margin-top: 10px; vertical-align: middle">
+    <div class="container" style="overflow-y:auto; height: 400px;">
+        <div class="row" style="margin-top: 20px;">
+            <table class="table table-hover">
+
+                        <tbody>
+                            {% for Book in book %}
+
+                            <tr>
+
+                                <td>{{book_title}}</td>
+                                <td>{{reader.reader_contact}}</td>
+                                <td>{{reader.reference_id}}</td>
+                                <td>{{reader.reader_address}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
