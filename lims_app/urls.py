@@ -26,5 +26,7 @@ urlpatterns = [
     path('save',save_student),
     path('reader/add', save_reader),
     path('book/add', save_books),
-    path('bag', my_bag)
+    path('bag', my_bag),
+    path('bag/add', add_to_bag),
+    path('bag/remove/<int:book_id>', remove_from_bag)
 ]

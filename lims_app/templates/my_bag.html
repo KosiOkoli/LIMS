@@ -4,6 +4,35 @@
 
 {% block main_content %}
 
-<h1>MY BAG</h1>
-
+<h1 style="text-align: center;">MY BAG</h1>
+<div class="container" style="overflow-y:auto; height: 400px;">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Author</td>
+                <td>Book Description</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in request.session.bag %}
+            <tr>
+                <td>{{book.title}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.description}}</td>
+                 <td>
+                    <form action="/bag/remove/{{book.id}}" method="POST" style="display:inline;">
+                    {% csrf_token %}
+                    <button class="btn btn-danger" type="submit">Remove</button>
+            </form>
+        </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="3">Your Bag is empty.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}

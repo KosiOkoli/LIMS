@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.contrib import admin
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 from . models import *
@@ -57,3 +58,31 @@ def save_books(request):
 def my_bag(request):
     return render(request, "my_bag.html", context={"current_tab": "bag"})
 
+
+def add_to_bag(request):
+    if request.method == "POST":
+        book_id = request.POST.get("book_id")
+        book = get_object_or_404(Book, id=book_id)
+
+
+        bag = request.session.get("bag", [])
+        bag.append({
+            "id": book.id,
+            "title": book.book_title,
+            "author": book.book_author,
+            "description": book.book_description,
+        })
+        request.session["bag"] = bag
+
+        return redirect("/bag")
+def remove_from_bag(request, book_id):
+    # Retrieve the bag from the session
+    bag = request.session.get("bag", [])
+
+    # Filter out the book with the given ID
+    bag = [book for book in bag if book["id"] != book_id]
+
+    # Save the updated bag back to the session
+    request.session["bag"] = bag
+
+    return redirect("/bag")
